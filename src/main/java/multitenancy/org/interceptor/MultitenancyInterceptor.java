@@ -1,28 +1,21 @@
 package multitenancy.org.interceptor;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import multitenancy.org.constants.CustomRequestAttributes;
 
 public class MultitenancyInterceptor extends HandlerInterceptorAdapter {
 
-	private static final String TENANT_PATH_VARIABLE = "tenantId";
-
-	@SuppressWarnings("unchecked")
 	@Override
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object handler) throws Exception {
 
-		Map<String, Object> pathVars = (Map<String, Object>) req
-				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
+		String tenantId = req.getHeader("Authorization");
 
-		if (pathVars.containsKey(TENANT_PATH_VARIABLE)) {
-			req.setAttribute(CustomRequestAttributes.CURRENT_TENANT_IDENTIFIER, pathVars.get(TENANT_PATH_VARIABLE));
+		if (tenantId != null) {
+			req.setAttribute(CustomRequestAttributes.CURRENT_TENANT_IDENTIFIER, tenantId);
 		}
 
 		return true;

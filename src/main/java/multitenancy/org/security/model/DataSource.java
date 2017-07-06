@@ -54,6 +54,14 @@ public class DataSource implements Serializable {
 		this.url = url;
 		this.driverClassName = driverClassName;
 	}
+	
+	public DataSource(String username, String password, String url, String driverClassName) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.url = url;
+		this.driverClassName = driverClassName;
+	}
 
 	public Long getId() {
 		return id;

@@ -35,9 +35,6 @@ public class DatabaseConfiguration {
 	@Autowired
 	private JpaProperties jpaProperties;
 
-	@Autowired
-	private DataSource dataSource;
-
 	@Bean(destroyMethod = "close")
 	public DataSource dataSource() {
 		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
@@ -73,7 +70,6 @@ public class DatabaseConfiguration {
 	public JpaTransactionManager transactionManager(EntityManagerFactory masterEntityManager) {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(masterEntityManager);
-//		transactionManager.setDataSource(dataSource());
 		return transactionManager;
 	}
 }

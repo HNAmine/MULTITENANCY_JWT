@@ -21,11 +21,11 @@ public class DataSourceDB {
 	public void init() {
 
 		Tenant t1 = new Tenant();
-		t1.setName("tenant_1");
+		t1.setName("tenant_0");
 		t1.setUsername("root");
 		t1.setDriverClassName("com.mysql.jdbc.Driver");
 		t1.setPassword("");
-		t1.setUrl("jdbc:mysql://localhost:3306/tenant_1?serverTimezone=UTC");
+		t1.setUrl("jdbc:mysql://localhost:3306/tenant_0?serverTimezone=UTC");
 		t1.setDefault(true);
 
 		tenants.add(t1);

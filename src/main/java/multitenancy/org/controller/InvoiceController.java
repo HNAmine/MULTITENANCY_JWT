@@ -14,14 +14,14 @@ import multitenancy.org.model.Invoice;
 import multitenancy.org.repository.InvoiceRepository;
 
 @RestController
-@RequestMapping("/{tenantId}/invoice")
+@RequestMapping("/invoice")
 public class InvoiceController {
 
 	@Autowired
 	private InvoiceRepository invoiceRepository;
 
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Invoice> invoices() {
+	public List<Invoice> invoices() {		
 		return Lists.newArrayList(invoiceRepository.findAll());
 	}
 
